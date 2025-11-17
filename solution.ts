@@ -1,31 +1,46 @@
-/*
-- This solution.ts file is an example; replace it with your own code.
-- Use the same function names and parameter names as in the problem statement.
-- Write only the code inside the function bodies and return the result.
-- Do not use any console.log statements or comments.
-*/
+// ! problem one (DELETE after using)
 
-const getSwallowVelocity = (type: 'african' | 'european'): string => {
-  if (type === 'african') {
-    return 'Roughly 11 meters per second.';
-  }
-  return "I... I don't know that!";
+const formatValue = (
+	transformValue: number | string | boolean
+): number | string | boolean => {
+	if (typeof transformValue === "number") {
+		return transformValue * 10;
+	} else if (typeof transformValue === "string") {
+		return transformValue.toUpperCase();
+	} else {
+		return !transformValue;
+	}
+};
+
+console.log(formatValue("hello"));
+console.log(formatValue(5));
+console.log(formatValue(true));
+
+// !__________-------------------------------------
+// ?__________-------------------------------------
+// !__________-------------------------------------
+
+const getSwallowVelocity = (type: "african" | "european"): string => {
+	if (type === "african") {
+		return "Roughly 11 meters per second.";
+	}
+	return "I... I don't know that!";
 };
 
 const isCatLiquid = (isAsleep: boolean, containerShape: string): boolean => {
-  return isAsleep && containerShape !== 'none';
+	return isAsleep && containerShape !== "none";
 };
 
 class Wizard {
-  name: string;
-  favoriteSpell: string;
+	name: string;
+	favoriteSpell: string;
 
-  constructor(name: string, favoriteSpell: string) {
-    this.name = name;
-    this.favoriteSpell = favoriteSpell;
-  }
+	constructor(name: string, favoriteSpell: string) {
+		this.name = name;
+		this.favoriteSpell = favoriteSpell;
+	}
 
-  castSpell(): string {
-    return `${this.name} casts ${this.favoriteSpell}!`;
-  }
+	castSpell(): string {
+		return `${this.name} casts ${this.favoriteSpell}!`;
+	}
 }
