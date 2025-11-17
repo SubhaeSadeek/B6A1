@@ -1,5 +1,3 @@
-// ! problem one (DELETE after using)
-
 const formatValue = (
 	transformValue: number | string | boolean
 ): number | string | boolean => {
@@ -12,9 +10,36 @@ const formatValue = (
 	}
 };
 
-console.log(formatValue("hello"));
-console.log(formatValue(5));
-console.log(formatValue(true));
+const getLength = <T>(lengthOfValue: T[] | string): number => {
+	if (typeof lengthOfValue === "string") {
+		return lengthOfValue.length;
+	} else {
+		return lengthOfValue.length;
+	}
+};
+
+// ! problem ***THREE*** (DELETE after using)
+
+class Person {
+	name: string;
+	age: number;
+	constructor(name: string, age: number) {
+		this.name = name;
+		this.age = age;
+	}
+	getDetails() {
+		const getName = this.name
+			.toLowerCase()
+			.split(" ")
+			.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+			.join(" ");
+		console.log(getName);
+		return `"Name: ${getName}, Age: ${this.age}"`;
+	}
+}
+
+const person1 = new Person("John Doe", 30);
+console.log(person1.getDetails());
 
 // !__________-------------------------------------
 // ?__________-------------------------------------
