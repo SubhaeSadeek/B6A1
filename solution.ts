@@ -18,8 +18,6 @@ const getLength = <T>(lengthOfValue: T[] | string): number => {
 	}
 };
 
-// ! problem ***THREE*** (DELETE after using)
-
 class Person {
 	name: string;
 	age: number;
@@ -33,15 +31,37 @@ class Person {
 			.split(" ")
 			.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
 			.join(" ");
-		console.log(getName);
 		return `"Name: ${getName}, Age: ${this.age}"`;
 	}
 }
 
-const person1 = new Person("John Doe", 30);
-console.log(person1.getDetails());
+const filterByRating = (
+	items: { title: string; rating: number }[]
+): { title: string; rating: number }[] => {
+	const itemsRatingZeroToFive = items.filter(
+		(item) => item.rating >= 0 && item.rating <= 5
+	);
+	return itemsRatingZeroToFive.filter(
+		(itemAboveRating4) => itemAboveRating4.rating >= 4
+	);
+};
 
-// !__________-------------------------------------
+// ! problem ***FIVE*** (DELETE after using)
+const filterActiveUsers = (
+	users: { id: number; name: string; email: string; isActive: boolean }[]
+): { id: number; name: string; email: string; isActive: boolean }[] => {
+	return users.filter((user) => {
+		return user.isActive === true;
+	});
+};
+const users = [
+	{ id: 1, name: "Rakib", email: "rakib@example.com", isActive: true },
+	{ id: 2, name: "Asha", email: "asha@example.com", isActive: false },
+	{ id: 3, name: "Rumi", email: "rumi@example.com", isActive: true },
+];
+
+console.log(filterActiveUsers(users));
+// __________-------------------------------------
 // ?__________-------------------------------------
 // !__________-------------------------------------
 
