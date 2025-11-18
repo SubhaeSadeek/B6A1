@@ -31,7 +31,7 @@ class Person {
 			.split(" ")
 			.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
 			.join(" ");
-		return `"Name: ${getName}, Age: ${this.age}"`;
+		return `'Name: ${getName}, Age: ${this.age}'`;
 	}
 }
 
@@ -46,21 +46,30 @@ const filterByRating = (
 	);
 };
 
-// ! problem ***FIVE*** (DELETE after using)
 const filterActiveUsers = (
 	users: { id: number; name: string; email: string; isActive: boolean }[]
 ): { id: number; name: string; email: string; isActive: boolean }[] => {
-	return users.filter((user) => {
-		return user.isActive === true;
-	});
+	return users.filter((user) => user.isActive === true);
 };
-const users = [
-	{ id: 1, name: "Rakib", email: "rakib@example.com", isActive: true },
-	{ id: 2, name: "Asha", email: "asha@example.com", isActive: false },
-	{ id: 3, name: "Rumi", email: "rumi@example.com", isActive: true },
-];
 
-console.log(filterActiveUsers(users));
+interface Book {
+	title: string;
+	author: string;
+	publishedYear: number;
+	isAvailable: boolean;
+}
+const printBookDetails = (bookInfo: Book): string => {
+	return `Title: ${bookInfo.title}, Author: ${bookInfo.author}, Published: ${
+		bookInfo.publishedYear
+	}, Available: ${bookInfo.isAvailable ? "Yes" : "No"}`;
+};
+
+const getUniqueValues = (
+	array1: (number | string)[],
+	array2: (number | string)[]
+): (number | string)[] => {
+	return [];
+};
 // __________-------------------------------------
 // ?__________-------------------------------------
 // !__________-------------------------------------
