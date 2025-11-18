@@ -84,10 +84,17 @@ const calculateTotalPrice = (
 		quantity: number;
 		discount?: number;
 	}[]
-): unknown => {
-	const totalPricePerProduct = products.map(
-		(product) => product.price * product.quantity
-	);
+): number => {
+	const totalPricePerProduct = products.map((product) => {
+		const { price, quantity, discount } = product;
+
+		if (discount !== undefined && discount >= 0 && discount <= 100) {
+			return price * quantity * (1 - discount / 100);
+		} else {
+			return price * quantity;
+		}
+	});
+	console.log(totalPricePerProduct);
 	const totalPriceOfAllProduct = totalPricePerProduct.reduce(
 		(sum, productPrice) => sum + productPrice,
 		0
@@ -95,13 +102,7 @@ const calculateTotalPrice = (
 
 	return totalPriceOfAllProduct;
 };
-const products = [
-	{ name: "Pen", price: 10, quantity: 2 },
-	{ name: "Notebook", price: 25, quantity: 3, discount: 10 },
-	{ name: "Bag", price: 50, quantity: 1, discount: 20 },
-];
 
-console.log(calculateTotalPrice(products));
 // __________-------------------------------------
 // ?__________-------------------------------------
 // !__________-------------------------------------
