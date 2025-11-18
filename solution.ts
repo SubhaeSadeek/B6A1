@@ -68,15 +68,31 @@ const getUniqueValues = (
 	array1: (number | string)[],
 	array2: (number | string)[]
 ): (number | string)[] => {
-	return [];
+	let uniqueItems: (number | string)[] = [];
+	const utilForGettingUniqueValue = (
+		arr: (number | string)[],
+		value: number | string
+	): boolean => {
+		for (let i = 0; i < arr.length; i++) {
+			if (arr[i] === value) {
+				return true;
+			}
+		}
+		return false;
+	};
+	for (let i = 0; i < array1.length; i++) {
+		if (!utilForGettingUniqueValue(uniqueItems, array1[i])) {
+			uniqueItems.push(array1[i]);
+		}
+	}
+	for (let i = 0; i < array2.length; i++) {
+		if (!utilForGettingUniqueValue(uniqueItems, array2[i])) {
+			uniqueItems.push(array2[i]);
+		}
+	}
+	return uniqueItems;
 };
 
-/*
- *****************            *********
- *****************for problem 7********
- */
-
-// ! problem 8 is here to go
 const calculateTotalPrice = (
 	products: {
 		name: string;
@@ -94,7 +110,7 @@ const calculateTotalPrice = (
 			return price * quantity;
 		}
 	});
-	console.log(totalPricePerProduct);
+
 	const totalPriceOfAllProduct = totalPricePerProduct.reduce(
 		(sum, productPrice) => sum + productPrice,
 		0
