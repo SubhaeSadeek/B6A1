@@ -70,6 +70,38 @@ const getUniqueValues = (
 ): (number | string)[] => {
 	return [];
 };
+
+/*
+ *****************            *********
+ *****************for problem 7********
+ */
+
+// ! problem 8 is here to go
+const calculateTotalPrice = (
+	products: {
+		name: string;
+		price: number;
+		quantity: number;
+		discount?: number;
+	}[]
+): unknown => {
+	const totalPricePerProduct = products.map(
+		(product) => product.price * product.quantity
+	);
+	const totalPriceOfAllProduct = totalPricePerProduct.reduce(
+		(sum, productPrice) => sum + productPrice,
+		0
+	);
+
+	return totalPriceOfAllProduct;
+};
+const products = [
+	{ name: "Pen", price: 10, quantity: 2 },
+	{ name: "Notebook", price: 25, quantity: 3, discount: 10 },
+	{ name: "Bag", price: 50, quantity: 1, discount: 20 },
+];
+
+console.log(calculateTotalPrice(products));
 // __________-------------------------------------
 // ?__________-------------------------------------
 // !__________-------------------------------------
